@@ -1,0 +1,195 @@
+:root {
+    --pink-center: #ffb6c1;
+    --maroon-edge: #800000;
+    --white: #ffffff;
+}
+
+body {
+    margin: 0; padding: 0;
+    background: radial-gradient(circle at center, var(--pink-center) 0%, var(--maroon-edge) 100%);
+    background-attachment: fixed;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+.text-maroon { color: #800000; }
+.text-white { color: var(--white); }
+.hidden { display: none !important; }
+.serif-text { font-family: 'Playfair Display', serif; }
+.flex-center { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.text-center { text-align: center; }
+
+/* -- EFEK BUNGA MEKAR (SEPERTI DI VIDEO TIKTOK) -- */
+#flower-container {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 0; overflow: hidden;
+}
+.flower-bloom {
+    position: absolute;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* rotasi diatur dari JavaScript agar bervariasi */
+    transform: translate(-50%, -50%) scale(0) rotate(var(--rot));
+    animation: bloom 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+@keyframes bloom {
+    0% { transform: translate(-50%, -50%) scale(0) rotate(calc(var(--rot) - 30deg)); opacity: 0; }
+    100% { transform: translate(-50%, -50%) scale(1) rotate(var(--rot)); opacity: 1; }
+}
+
+/* Tambahan agar konten utama tetap bisa diklik dan di atas bunga */
+#main-content { position: relative; z-index: 5; }
+
+/* -- KACA PEMBUKA -- */
+.screen-overlay {
+    position: fixed; top:0; left:0; width:100%; height:100vh;
+    display:flex; justify-content:center; align-items:center; z-index: 10;
+}
+.glass-panel {
+    background: rgba(255,255,255,0.8); backdrop-filter: blur(12px); 
+    padding: 40px; border-radius: 20px; text-align: center; 
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3); max-width: 80%; z-index: 11;
+}
+.magnetic-btn {
+    background-color: var(--maroon-edge); color: white; border: none;
+    padding: 12px 25px; border-radius: 30px; font-family: 'Poppins', sans-serif;
+    font-size: 16px; cursor: pointer; margin-top: 15px; transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); font-weight: 500;
+}
+.magnetic-btn:hover { background-color: #a30000; transform: scale(1.05) translateY(-3px); }
+input { padding: 10px; border-radius: 10px; border: 1px solid #ccc; margin-top: 10px; text-align: center; font-family: 'Poppins', sans-serif;}
+
+/* -- MENU & TEKS GLOWING -- */
+.header-section { margin-top: 5vh; }
+.title-glow { color: white; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); font-size: 2.8rem; margin-bottom: 5px; }
+.subtitle-glow { color: white; font-size: 1.2rem; text-shadow: 1px 1px 5px rgba(0,0,0,0.4); }
+.options-container { display: flex; justify-content: center; flex-wrap: wrap; margin-top: 20px; padding: 20px; }
+
+/* -- 3 OPSI FOTO BERGERAK (MENGAMBANG) -- */
+.option-card {
+    cursor: pointer; margin: 15px; text-align: center;
+    transition: transform 0.4s ease;
+    animation: floatUp 3s infinite ease-in-out alternate;
+}
+.option-card:nth-child(1) { animation-delay: 0s; }
+.option-card:nth-child(2) { animation-delay: 1s; }
+.option-card:nth-child(3) { animation-delay: 2s; }
+.option-card img {
+    width: 130px; height: 130px; object-fit: cover;
+    border-radius: 50%; border: 5px solid white;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3); transition: transform 0.3s;
+}
+.option-card:hover img { transform: scale(1.1) rotate(5deg); }
+.option-card p {
+    color: white; font-weight: 600; font-size: 1.1rem;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5); margin-top: 15px;
+}
+@keyframes floatUp { 0% { transform: translateY(0px); } 100% { transform: translateY(-20px); } }
+
+/* -- BINGKAI POLAROID & CAPTION -- */
+.masonry-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; padding: 30px; max-width: 1000px; margin: 0 auto; }
+.polaroid {
+    background-color: white; padding: 12px 12px 50px 12px; border-radius: 5px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4); position: relative; text-align: center; transition: 0.4s ease;
+}
+.polaroid img { width: 250px; height: 250px; object-fit: cover; }
+.polaroid p {
+    position: absolute; bottom: 12px; left: 0; right: 0; margin: 0;
+    font-family: 'Playfair Display', serif; font-size: 16px; font-style: italic; color: #333;
+}
+.masonry-grid .polaroid:nth-child(even) { transform: rotate(4deg); }
+.masonry-grid .polaroid:nth-child(odd) { transform: rotate(-4deg); }
+.masonry-grid .polaroid:hover { transform: scale(1.15) rotate(0deg); z-index: 10; box-shadow: 0 15px 30px rgba(0,0,0,0.6); }
+
+/* -- SURAT CINTA -- */
+.paper-envelope {
+    background: #fffdf8; padding: 40px; border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4); max-width: 700px; width: 90%;
+    margin: 30px auto; border: 2px dashed #d4af37;
+}
+.letter-content { font-size: 16px; line-height: 1.8; white-space: pre-line; color: #333; }
+
+/* -- KUE & LILIN -- */
+/* -- KUE BERGAMBAR & LILIN -- */
+.cake-container { margin: 60px auto; text-align: center; }
+
+/* Pembungkus agar api bisa menempel di gambar */
+.cake-wrapper {
+    position: relative;
+    display: inline-block; 
+}
+
+/* Ukuran Gambar Kue */
+.cake-wrapper img {
+    width: 300px; /* Silakan ubah angka ini jika kuenya terlalu besar/kecil */
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3)); /* Efek bayangan estetik */
+}
+
+/* Posisi Api Lilin */
+.flame {
+    width: 25px; height: 40px; background: #ff9d00; border-radius: 50% 50% 20% 20%;
+    position: absolute;
+    
+    /* ⚠️ PENTING: UBAH ANGKA INI UNTUK MENGGESER POSISI API AGAR PAS DI ATAS LILIN GAMBARMU */
+    top: 20%;  /* Ubah persentase ini untuk naik-turun (semakin besar makin ke bawah) */
+    left: 50%; /* Ubah persentase ini untuk geser kiri-kanan */
+    
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 20px #ff9d00, 0 0 40px #ff9d00;
+    animation: flicker 0.1s infinite alternate; transition: opacity 0.5s;
+}
+
+.flame.out { opacity: 0; }
+@keyframes flicker { 
+    0% { transform: translate(-50%, -50%) scale(1) rotate(-2deg); } 
+    100% { transform: translate(-50%, -50%) scale(1.05) rotate(2deg); } 
+}
+/* ==========================================
+   📱 TAMPILAN RESPONSIVE UNTUK HP (MOBILE)
+   ========================================== */
+@media screen and (max-width: 768px) {
+    /* 1. Kaca Pembuka & Teks */
+    .glass-panel { padding: 25px 15px; width: 85%; max-width: 85%; }
+    .title-glow { font-size: 1.8rem; }
+    .subtitle-glow { font-size: 1rem; padding: 0 10px; }
+
+    /* 2. Opsi Menu (Diperkecil agar muat berjajar/rapi) */
+    .option-card { margin: 8px; }
+    .option-card img { width: 90px; height: 90px; border-width: 3px; }
+    .option-card p { font-size: 0.9rem; margin-top: 10px; }
+    .options-container { padding: 5px; gap: 5px; }
+
+    /* 3. Galeri Polaroid (Disesuaikan dengan lebar HP) */
+    .masonry-grid { padding: 15px; gap: 15px; }
+    .polaroid { padding: 10px 10px 40px 10px; }
+    .polaroid img { 
+        width: 70vw; /* Mengikuti lebar layar HP */
+        max-width: 250px; 
+        height: 70vw; 
+        max-height: 250px; 
+    }
+    .polaroid p { font-size: 14px; bottom: 10px; }
+
+    /* 4. Surat Cinta */
+    .paper-envelope { 
+        padding: 25px 15px; 
+        width: 85%; 
+        margin: 20px auto; 
+    }
+    .letter-content { font-size: 14px; line-height: 1.6; }
+
+    /* 5. Kue Ulang Tahun */
+    .cake-container { margin: 40px auto; }
+    .cake-wrapper img { 
+        width: 75vw; /* Kue mengecil mengikuti layar HP */
+        max-width: 250px; 
+    }
+    
+    /* 6. Form Input & Tombol */
+    input { width: 80%; }
+    .magnetic-btn { font-size: 14px; padding: 10px 20px; }
+}

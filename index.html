@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shofwa Farah Kamila❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Efek Hujan Bunga -->
+    <div id="flower-container"></div>
+
+    <!-- 1. Halaman Kunci (Kaca) -->
+<div id="gatekeeper" class="screen-overlay">
+        <div class="glass-panel">
+            <h2 id="opening-text" class="serif-text text-maroon">Aku punya sesuatu untuk seseorang yang paling spesial...</h2>
+            
+            <h3 id="instruction-text" class="serif-text text-maroon hidden">Coba sentuh dan usap layar kamu pelan pelan yaa... 🌸</h3>
+            
+            <div id="unlock-form" class="hidden">
+                <p class="text-maroon">Masukkan tanggal lahir kamu byy (DDMMYY)</p>
+                <input type="text" id="secret-input" placeholder="Jawabanmu..." autocomplete="off">
+                <button id="unlock-btn" class="magnetic-btn">Buka Hadiah</button>
+                <p id="error-msg" class="error-text"></p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Audio Player -->
+    <audio id="bg-music" loop><source src="" type="audio/mpeg"></audio>
+
+    <!-- 2. Halaman Utama (Pilihan Menu) -->
+    <main id="main-content" class="hidden">
+        
+        <header class="header-section">
+            <h1 class="serif-text title-glow text-center">Happy 21st Birthday, Sayaaang! 💖</h1>
+            <p class="text-center subtitle-glow">Pilih hadiah yang ingin kamu buka di bawah ini yaaa:</p>
+            
+            <!-- Tiga Opsi Tombol Menggunakan Gambar -->
+            <div class="options-container">
+                <div class="option-card" id="btn-gallery">
+                    <img src="Assets/Images/Opsi1.png" alt="Galeri">
+                    <p>📸 our memories</p>
+                </div>
+                <div class="option-card" id="btn-letter">
+                    <img src="Assets/Images/Opsi2.png" alt="Surat">
+                    <p>💌 love letter</p>
+                </div>
+                <div class="option-card" id="btn-cake">
+                    <img src="Assets/Images/Opsi3.png" alt="Kue">
+                    <p>🎂 cake for uuu</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- A. Bagian Galeri (Bingkai Polaroid) -->
+        <section id="gallery-section" class="content-section hidden">
+            <div class="masonry-grid" id="gallery-container">
+                <!-- Foto dimuat otomatis dari JS -->
+            </div>
+        </section>
+
+        <!-- B. Bagian Surat Cinta -->
+        <section id="letter-section" class="content-section hidden flex-center">
+            <div class="paper-envelope">
+                <h2 class="serif-text text-center text-maroon" style="margin-bottom: 20px;">Happy Birthday Sayaaang 💖</h2>
+                <div class="letter-content"><p id="typewriter-text" class="serif-text"></p></div>
+            </div>
+        </section>
+
+        <!-- C. Bagian Kue & Lilin -->
+       <section id="cake-section" class="content-section hidden flex-center">
+            <div class="cake-container">
+                
+                <div class="cake-wrapper">
+                    <img src="Assets/Images/Opsi3.png" alt="Kue Ulang Tahun" id="cake-img">
+                    <div class="flame" id="flame"></div>
+                </div>
+
+                <h3 class="serif-text text-white" style="margin-top: 30px;">Tiup lilinnya (dekatkan ke mic-mu yaa)</h3>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
